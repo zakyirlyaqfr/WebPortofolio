@@ -4,26 +4,57 @@ import { TechTag } from "@/components/ui/TechTag";
 
 const softSkills = [
   "Leadership",
-  "Communication",
-  "Team Collaboration",
-  "Problem Solving",
-  "Adaptability",
-  "Analytical Thinking",
-  "Time Management",
+  "Strategic Planning",
+  "Team Management",
+  "Cross-functional Collaboration",
   "Public Speaking",
+  "Effective Communication",
+  "Stakeholder Negotiation",
+  "Critical Thinking",
+  "Analytical Problem-Solving",
+  "Adaptability",
+  "Agile Project Management",
 ];
 
 const hardSkills = [
+  "Full-stack Mobile Development",
+  "Full-stack Web Development",
+  "RESTful API Design",
+  "Microservices Architecture",
+  "UI/UX Wireframing",
+  "High-fidelity Prototyping",
+  "Software Requirement Analysis",
+  "Software Quality Assurance",
+  "System Testing",
+  "Relational Database Management",
+  "Non-relational Database Management",
+  "Data Mining",
+  "Machine Learning Classification",
+  "Cloud Computing Engineering",
+  "Cyber Security Implementation",
+];
+
+const toolsFrameworks = [
   "Flutter",
   "Dart",
-  "PocketBase",
+  "Golang",
+  "Fiber",
   "Laravel",
-  "MySQL",
-  "PostgreSQL",
+  "PHP",
   "Tailwind CSS",
-  "HTML",
+  "HTML5",
+  "CSS3",
+  "JavaScript",
   "Figma",
-  "Git & GitHub",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "PocketBase",
+  "Swagger",
+  "Git",
+  "GitHub",
+  "Docker",
+  "Microsoft Office Suite",
 ];
 
 const achievements = [
@@ -51,17 +82,20 @@ const experiences = [
   "UI/UX Design & Prototyping",
   "Executive Division Chairman — HIMA D4 Teknik Informatika",
   "Education Division Staff — HIMA D4 Teknik Informatika",
-  "Sponsorship Coordinator Lead — HIMTI GOIN'",
   "Kominfo Division Staff — IMAMI",
+  "And Many More",
 ];
 
+const photo = "/images/jaki.jpg";
+
 export default function About() {
+
   return (
     <Layout>
       <section className="py-20">
         <div className="container">
           <div className="max-w-3xl mb-12 opacity-0 animate-fade-in-up">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               About
             </h1>
           </div>
@@ -69,9 +103,9 @@ export default function About() {
           <div className="grid gap-16 lg:grid-cols-3">
             <div className="lg:col-span-2 space-y-6">
               <div className="mb-8 opacity-0 animate-fade-in-up stagger-1">
-                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden border-2 border-primary/30 transition-all duration-300 hover:border-primary">
+                <div className="relative w-full max-w-md aspect-[4/5] rounded-lg overflow-hidden border-2 border-primary/30 transition-all duration-300 hover:border-primary">
                   <img
-                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
+                    src={photo}
                     alt="Muhammad Zaky Irly Alqifari"
                     className="w-full h-full object-cover"
                   />
@@ -120,14 +154,11 @@ export default function About() {
                 <h2 className="font-mono text-sm text-primary mb-4">
                   <span className="text-muted-foreground">/*</span> Soft Skills <span className="text-muted-foreground">*/</span>
                 </h2>
-                <ul className="space-y-2">
+                <div className="flex flex-wrap gap-2">
                   {softSkills.map((skill) => (
-                    <li key={skill} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                      <span className="text-primary mr-2">→</span>
-                      {skill}
-                    </li>
+                    <TechTag key={skill}>{skill}</TechTag>
                   ))}
-                </ul>
+                </div>
               </div>
 
               <div className="opacity-0 animate-fade-in-up stagger-3">
@@ -137,6 +168,17 @@ export default function About() {
                 <div className="flex flex-wrap gap-2">
                   {hardSkills.map((tech) => (
                     <TechTag key={tech}>{tech}</TechTag>
+                  ))}
+                </div>
+              </div>
+
+              <div className="opacity-0 animate-fade-in-up stagger-3">
+                <h2 className="font-mono text-sm text-primary mb-4">
+                  <span className="text-muted-foreground">/*</span> Tools & Frameworks <span className="text-muted-foreground">*/</span>
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {toolsFrameworks.map((tool) => (
+                    <TechTag key={tool}>{tool}</TechTag>
                   ))}
                 </div>
               </div>

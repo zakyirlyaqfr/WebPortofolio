@@ -5,7 +5,7 @@ import { CodeDivider } from "@/components/ui/CodeDivider";
 import { CodeLabel } from "@/components/ui/CodeLabel";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { TypingCursor } from "@/components/ui/TypingCursor";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 const featuredProjects = [
   {
@@ -62,12 +62,18 @@ export default function Home() {
             </p>
 
             {/* CTA */}
-            <div className="opacity-0 animate-fade-in-up stagger-2">
+            <div className="opacity-0 animate-fade-in-up stagger-2 flex flex-wrap gap-3">
               <Button asChild size="lg" className="font-mono transition-transform hover:scale-105">
                 <Link to="/work">
                   View Work
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="font-mono transition-transform hover:scale-105">
+                <a href="/cv.pdf" download="Muhammad-Zaky-Irly-Alqifari-CV.pdf">
+                  Download CV
+                  <Download className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>

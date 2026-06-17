@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { CodeDivider } from "@/components/ui/CodeDivider";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { cn } from "@/lib/utils";
 
 type Project = {
   name: string;
@@ -103,11 +105,19 @@ const projectGroups: { category: string; projects: Project[] }[] = [
 ];
 
 export default function Work() {
+  const categories = ["All", ...projectGroups.map((g) => g.category)];
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+
+  const visibleGroups =
+    activeCategory === "All"
+      ? projectGroups
+      : projectGroups.filter((g) => g.category === activeCategory);
+
   return (
     <Layout>
       <section className="py-20">
         <div className="container">
-          <div className="max-w-2xl mb-12 opacity-0 animate-fade-in-up">
+          <div className="max-w-2xl mb-8 opacity-0 animate-fade-in-up">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Project
             </h1>
@@ -118,7 +128,26 @@ export default function Work() {
             </p>
           </div>
 
-          {projectGroups.map((group) => (
+          {/* Filter */}
+          <div className="mb-12 flex flex-wrap gap-2 opacity-0 animate-fade-in-up">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={cn(
+                  "font-mono text-xs px-3 py-1.5 rounded-md border transition-colors",
+                  activeCategory === cat
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-border text-muted-foreground hover:text-primary hover:border-primary/50"
+                )}
+              >
+                <span className="text-primary mr-1">#</span>
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {visibleGroups.map((group) => (
             <div key={group.category} className="mb-12">
               <div className="opacity-0 animate-fade-in-up">
                 <CodeDivider label={group.category} />
@@ -132,6 +161,12 @@ export default function Work() {
               </div>
             </div>
           ))}
+
+          {visibleGroups.length === 0 && (
+            <p className="font-mono text-sm text-muted-foreground">
+              <span className="text-primary">{"//"}</span> No projects in this category yet.
+            </p>
+          )}
         </div>
       </section>
     </Layout>
